@@ -1,2 +1,4 @@
 # 6. メッセージエンコーディング
 Bluetooth Smartなどの多くのトランスポート層の通信は帯域幅制限があり、環境によってはJSONなどのシリアライゼーションフォーマットでは重すぎることがあります。このため、簡潔なバイナリエンコードができるCBOR(RFC7049)がエンコーディングに使われます。
+
+メッセージの複雑さとパース及びバリデーションで必要なリソースを削減するため、すべてのメッセージは以下に示すCTAP2 canonical CBOR encodingを使う必要があります(MUST)。これはRFC7049の3.9章で定義されているCTAP2 canonical CBOR encoding formの正規化提案とは別物です。全てのエンコーダは重複キーがないようにCTAP2 canonical encoding formの中でCBORをシリアライズする必要があります(MUST)。全てのデコーダはCTAP2 canonical CBOR encoding formに適格でないCBORを弾くべき(SHOULD)であり、また重複キーを持ったメッセージも弾くべきです(SHOULD)。
